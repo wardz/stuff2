@@ -1,0 +1,74 @@
+<main class="container" ng-cloak>
+	<div categories></div>
+
+	<div class="col-lg-7" id="addons">
+		<ul class="pagination" role="nav">
+			<li class="page-item">
+				<a class="page-link" ng-click="ctrl.pageClick(1)" href="#"><span>&laquo;</span></a>
+			</li>
+
+			<li ui-sref-active="active" ng-repeat="i in ctrl.pages track by $index" class="page-item">
+				<a ng-click="ctrl.pageClick(i)" class="page-link" href="#">{{i}}</a>
+			</li>
+			
+			<li class="page-item">
+				<a class="page-link" ng-click="ctrl.pageClick(ctrl.total / 15)" href="#"><span>&raquo;</span></a>
+			</li>
+		</ul>
+
+		<div class="btn-group pull-xs-right" id="dropdown-sort" uib-dropdown is-open="false">
+			<button type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">
+				Sort by <span class="caret"></span>
+			</button>
+
+			<div class="dropdown-menu" uib-dropdown-menu>
+				<a ng-click="ctrl.orderList('total_downloads')" href="#total_downloads" class="dropdown-item">Top</a>
+				<a ng-click="ctrl.orderList('updated')" href="#updated" class="dropdown-item">Newest</a>
+				<a ng-click="ctrl.orderList('name')" href="#name" class="dropdown-item">Name (A-Z)</a>
+			</div>
+		</div>
+
+		<form class="form-group" name="ctrl.searchform">
+			<input type="text" class="form-control"
+				name="searchInput"
+				placeholder="Search for addon..."
+				ng-maxlength="18"
+				ng-model="formData.searchInput"
+				ng-change="ctrl.search()"
+				ng-pattern="/^[a-zA-Z0-9]*$/">
+		</form>
+
+		<p class="text-muted">Displaying {{ctrl.amount}} out of {{ctrl.total}} addons total for patch {{ctrl.patch}}</p>
+
+		<div id="addons-body">
+			<div ng-show="ctrl.empty">
+				<p>No addons found in this category :(</p>
+			</div>
+
+			<div class="addon">
+				<p class="text-xs-center">{{::ctrl.errorMessage}}</p>
+				
+				<div class="addon-group"
+					ng-repeat="elem in ctrl.addonData | orderBy:ctrl.orderType">
+
+					<a class="addon-heading media" ng-href="/i/{{ctrl.currentExpansion}}/{{elem.name | encodeURI}}">
+						<figure class="media-left">
+							<img ng-src="REMOVED/{{::elem.image}}" class="media-object" width="120" height="120" alt="">
+						</figure>
+
+						<div class="media-body">
+							<h4 class="addon-heading-name media-heading">{{::elem.name}}</h4>
+							<span class="addon-heading-tag"><b>By:</b> <small>{{::elem.author}}</small></span>
+							<p class="addon-heading-tag"><small>{{ctrl.categories[elem.category_id] || ctrl.subcategories[elem.category_id]}}</small></p>
+							<div class="pull-xs-right addon-right-tags">
+								<p class="addon-heading-tag"><b>Version:</b> <small>{{::elem.version}}</small></p>
+								<p class="addon-heading-tag"><b>Downloads:</b> <small>{{::elem.total_downloads}}</small></p>
+								<p class="addon-heading-tag"><b>Updated:</b> <small>{{::elem.updated | date:'mediumDate'}}</small></p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

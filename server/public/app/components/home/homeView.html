@@ -1,0 +1,30 @@
+<section class="jumbotron text-xs-center">
+	<div class="container">
+		<h1 class="jumbotron-heading">Legacy addons for WoW</h1>
+		<p class="lead text-muted">Share and browse for old expansion specific World of Warcraft addons that are still largely used in private servers.</p>
+	</div>
+</section>
+
+<main class="album" ng-cloak>
+	<div class="container">
+		<h5>Select your expansion</h5>
+		<div class="row">
+			<!-- build:[src] https://REMOVED.cloudfront.net/ -->
+				<figure ui-sref="expansion({expID: 'vanilla'})" class="card">
+					<img src="/img/vanilla.min.png" class="img-fluid" width="280" height="130" alt="Go to Vanilla">
+					<figcaption class="card-text">World of Warcraft patch 1.12.1</figcaption>
+				</figure>
+
+				<figure ui-sref="expansion({expID: 'tbc'})" class="card">
+					<img src="/img/tbc.min.png" class="img-fluid" width="280" height="130" alt="Go to TBC">
+					<figcaption class="card-text">The Burning Crusade patch 2.4.3</figcaption>
+				</figure>
+
+				<figure ui-sref="expansion({expID: 'wotlk'})" class="card">
+					<img src="/img/wotlk.min.png" class="img-fluid" width="280" height="130" alt="Go to WotLK">
+					<figcaption class="card-text">Wrath of the Lich King patch 3.3.5</figcaption>
+				</figure>
+			<!-- /build -->
+		</div>
+	</div>
+</main>

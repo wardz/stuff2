@@ -1,0 +1,21 @@
+.bg-inverse {
+	background-color: #424F5A;
+}
+
+.nav-link.active,
+.nav-link.active:focus,
+.nav-link.active:active {
+	color: #4eb3ff !important;
+}
+
+#nav-section-1 {
+	padding-right: 20px;
+}
+
+.nav-pills .nav-item {
+	border-bottom: 1px solid #383838;
+}
+
+.nav-pills .nav-link {
+	color: #fff !important;
+}

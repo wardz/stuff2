@@ -1,0 +1,91 @@
+<main class="container">
+	<form ng-submit="ctrl.submit()" name="ctrl.form" class="center-form">
+		<div ng-if="ctrl.errorMessage" class="alert alert-danger">
+			{{ctrl.errorMessage}}
+		</div>
+
+		<fieldset class="form-group">
+			<legend>Upload new addon</legend>
+			<label for="addonname">Name</label>
+			<input type="text" class="form-control" id="addonname"
+				name="name"
+				placeholder="Enter addon's name..."
+				ng-class="{'form-control-danger': ctrl.nameError}"
+				ng-model="formData.name"
+				ng-minlength="3"
+				ng-maxlength="18"
+				ng-pattern="/^[a-zA-Z]*$/"
+				ng-required="true"
+				ng-click="ctrl.resetError()">
+			<small ng-show="ctrl.nameError" class="has-danger">
+				Invalid addon name (Letters a-z only, length 3-18).
+			</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="addonauthor">Author <small class="text-muted">(Leave blank if unknown)</small></label>
+			<input type="text" class="form-control" id="addonauthor"
+				name="author"
+				placeholder="Enter addon's author..."
+				ng-class="{'form-control-danger': ctrl.authorError}"
+				ng-model="formData.author"
+				ng-minlength="3"
+				ng-maxlength="18"
+				ng-pattern="/^[a-zA-Z]*$/"
+				ng-click="ctrl.resetError()">
+			<small ng-show="ctrl.authorError" class="has-danger">
+				Invalid author name (Letters a-z only, length 3-18).
+			</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="addondesc">Description</label>
+			<small class="text-muted">(Drag corner to expand.)</small>
+			<textarea class="form-control" id="addondesc"
+				name="description"
+				placeholder="Enter addon description..."
+				ng-class="{'form-control-danger': ctrl.descError}"
+				ng-model="formData.description"
+				ng-minlength="10"
+				ng-maxlength="254"
+				ng-required="true"
+				ng-click="ctrl.resetError()">
+			</textarea>
+			<small ng-show="ctrl.descError" class="has-danger">
+				Invalid addon description (length 10-254).
+			</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="">Select Expansion</label>
+			<select class="form-control" ng-model="formData.expansion" name="expansion">
+				<option value="">Click to choose</option>
+				<option value="vanilla">Vanilla</option>
+				<option value="tbc">The Burning Crusade</option>
+				<option value="wotlk">Wrath of the Lich King</option>
+			</select>
+			<small ng-show="ctrl.expError" class="has-danger">
+				Invalid expansion.
+			</small>
+		</fieldset>
+
+		<fieldset class="form-group" ng-show="formData.expansion">
+			<label for="">Select category</label>
+			<select class="form-control" ng-model="formData.category_id" name="category">
+				<option value="">Click to choose</option>
+				<optgroup ng-repeat="(key, value) in ctrl.subcategories track by $index" ng-attr-label="{{key}}">
+					<option ng-repeat="(subs, test) in value" ng-value="test.id">{{test.name}}</option>
+				</optgroup>
+			</select>
+			<small ng-show="ctrl.categoryError" class="has-danger">
+				Invalid category.
+			</small>
+		</fieldset>
+
+		<p><br>You can upload files on the addon's page once submitted.<br>
+		Your addon will become public when an uploaded file has been verified.
+		</p>
+
+		<button ng-disabled="ctrl.isSubmitting" type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</main>

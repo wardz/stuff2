@@ -1,0 +1,42 @@
+#addons {
+	padding-left: 5%;
+}
+
+#addons-body {
+	margin-top: 20px;
+}
+
+.addon-group {
+	border: 1px solid #ddd;
+	padding: .75rem 1.25rem;
+}
+
+.addon-group:nth-child(2n) {
+	background-color: #efefef;
+}
+
+.addon-group:hover {
+	border-color: #72818e;
+}
+
+.addon-heading {
+	color: #373a3c;
+}
+
+.addon-heading:hover,
+.addon-heading:focus {
+	text-decoration: none;
+	color: #484e52;
+}
+
+#addons .media-left {
+	padding-right: 15px;
+}
+
+.addon-heading-tag {
+	font-size: 12px;
+}
+
+.addon-right-tags {
+	margin-top: -60px;
+}

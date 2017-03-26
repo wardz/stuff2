@@ -1,0 +1,47 @@
+#category-card {
+	margin-left: -3%;
+	width: 25%;
+}
+
+#category-header {
+	background-color: #424f5a !important;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border: 0;
+}
+
+#category-card .list-group:first-child {
+	min-height: 500px;
+}
+
+#category-card .list-group-item:hover {
+	background-color: #ddd;
+}
+
+#category-card .list-group-item.active {
+	background-color: #0275d8 !important;
+}
+
+#category-card .list-group-item:nth-child(2n) {
+	background-color: #f3f3f3;
+}
+
+/** Subcategories */
+
+#subcategory-card {
+	position: absolute;
+	top: 24%;
+	left: 92%;
+	z-index: 1000;
+	width: 80%;
+	background-color: transparent;
+	float: left;
+}
+
+@media (max-width: 1199px) {
+	#subcategory-card {
+		top: 22.1%;
+		left: 88.5%;
+	}
+}

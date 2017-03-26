@@ -1,0 +1,7 @@
+.env
+.elasticbeanstalk/
+server.txt
+server/public/app/bin
+server/public/app/vendor/angular-cache.min.js
+server/public/app/vendor/ui-bootstrap-custom-tpls-1.3.3.min.js
+node_modules/

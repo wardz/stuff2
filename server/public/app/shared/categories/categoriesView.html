@@ -1,0 +1,33 @@
+<nav class="card" id="category-card" ng-cloak>
+	<div class="list-group">
+		<div class="list-group-item" id="category-header">Select category</div>
+		<p ng-if="catCtrl.errorMessage" class="text-xs-center"><br>{{catCtrl.errorMessage}}</p>
+
+		<a class="list-group-item"
+			ng-repeat="index in catCtrl.categories track by $index"
+			ng-class="{'active': index.id == catCtrl.selected}"
+			ng-mouseenter="catCtrl.subcategories[index.id] ? catCtrl.showSubs(index.id, $index) : return"
+			ng-mouseleave="catCtrl.subActive = false"
+			
+			ui-sref="expansion({category: index.id})"
+			ng-click="catCtrl.itemClicked($index, index.name)">
+			{{index.name}}
+
+			<span ng-show="catCtrl.subcategories[index.id]" class="pull-xs-right">></span>
+		</a>
+	</div>
+
+	<div class="card" id="subcategory-card"
+		ng-show="catCtrl.subActive"
+		ng-mouseleave="catCtrl.subActive = false"
+		ng-mouseenter="catCtrl.subActive = true">
+
+		<div class="list-group" id="subcategory-list-group">
+				<a class="list-group-item"
+				ng-repeat="index in catCtrl.subcategories[catCtrl.currSub] track by $index"
+				ui-sref="expansion({category: index.id})"
+				ng-click="catCtrl.itemClicked(catCtrl.currSubIndex, true)">
+				{{index.name}}</a>
+		</div>
+	</div>
+</nav>

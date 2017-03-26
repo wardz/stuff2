@@ -1,0 +1,40 @@
+<style>
+#addon-image {
+	float: left;
+	margin-right:55px;
+}
+#addon-main {
+	max-width: 85rem;
+}
+.btn-download {
+	margin: 0;
+	margin-top: -5px;
+}
+</style>
+
+<main id="addon-main" class="container blog-container">
+	<div id="row">
+		<img ng-src="{{::ctrl.addon.image}}" width="200" height="200" id="addon-image">
+		<div class="col-sm-8 blog-main">
+			<div class="blog-post">
+				<h2 class="blog-post-title">{{::ctrl.addon.name}}</h2>
+				<p class="blog-post-meta">By {{::ctrl.addon.author}}, updated {{::ctrl.addon.updated | date:'mediumDate'}}</p>
+
+				<div class="pull-xs-right">
+					<p>{{::ctrl.addon.file_name}} ({{::ctrl.addon.size}})</p>
+					<button ng-click="ctrl.download()" type="button" class="btn btn-primary btn-download">Download</button>
+				</div>
+
+				<p>
+				<b>Category</b> - {{::ctrl.addon.category_id}}<br>
+				<b>Version</b> - {{::ctrl.addon.version}}<br>
+				<b>Downloads</b> - {{::ctrl.addon.total_downloads}}
+				</p>
+				<hr><br>
+		
+				<h3>Description</h3>
+				<p>{{::ctrl.addon.description}}</p>
+			</div>
+		</div>
+	</div>
+</main>

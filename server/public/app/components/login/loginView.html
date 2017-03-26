@@ -1,0 +1,49 @@
+<script ng-if="ctrl.isCaptcha" src='https://www.google.com/recaptcha/api.js' type="text/javascript-lazy" async defer></script>
+
+<main class="container" ng-cloak>
+	<form ng-submit="ctrl.submit()" name="ctrl.form" class="center-form">
+		<div ng-if="ctrl.errorMessage" class="alert alert-danger">
+			{{ctrl.errorMessage}}
+		</div>
+
+		<fieldset class="form-group">
+			<legend>Authentication</legend>
+			<label for="username">Username</label>
+			<input type="text" class="form-control" id="username"
+				name="username"
+				placeholder="Enter your username..."
+				ng-class="{'form-control-danger': ctrl.userError}"
+				ng-model="formData.username"
+				ng-maxlength="16"
+				ng-minlength="3"
+				ng-required="true"
+				ng-pattern="/^[a-zA-Z]*$/"
+				ng-click="ctrl.resetError()">
+
+			<small ng-show="ctrl.userError" class="has-danger">Invalid username (Letters a-z only, length 3-16).</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password"
+				name="password"
+				placeholder="Enter your password..."
+				ng-class="{'form-control-danger': ctrl.passError}"
+				ng-model="formData.password"
+				ng-maxlength="32"
+				ng-minlength="6"
+				ng-required="true"
+				ng-click="ctrl.resetError()">
+
+				<small ng-show="ctrl.passError" class="has-danger">Invalid password (Length 6-32).</small>
+		</fieldset>
+
+		<label ng-if="ctrl.isCaptcha">Human verification
+			<div class="g-recaptcha" data-sitekey="{{::ctrl.CAPTCHA_KEY_PUBLIC}}"></div>
+			<small ng-if="ctrl.capError" class="has-danger">Empty or invalid captcha entered.<br></small>
+		</label>
+
+		<button ng-disabled="ctrl.isSubmitting" type="submit" class="btn btn-primary">Login</button>
+		<p>No account? <a ui-sref="register">Register here.</a></p>
+	</form>
+</main>

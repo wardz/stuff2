@@ -1,0 +1,28 @@
+.jumbotron {
+	padding: 6rem 0 6rem;
+	background-color: #fff;
+}
+
+.jumbotron .container {
+	max-width: 40rem;
+}
+
+.album {
+	padding: 3rem 0 3rem;
+	background-color: #eaeaea;
+}
+
+.album .row {
+	margin-right: 0;
+	margin-left: 5%;
+}
+
+.album .card {
+	cursor: pointer;
+	background-color: #eaeaea;
+}
+
+.album .card:hover {
+	opacity: 0.7;
+}
+

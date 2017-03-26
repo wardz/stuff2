@@ -1,0 +1,214 @@
+/* Loading screen animation for app */
+#loadscreen[ng-cloak] {
+	display: block !important;
+}
+
+#loadscreen {
+	display: none;
+	background-color: #ddd;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#loadscreen p {
+	text-align: center;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	background-color: #333;
+
+	margin: 100px auto 20px;
+	-webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+	animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+	0% { -webkit-transform: perspective(120px) }
+	50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+	100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+	0% { 
+		transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+		-webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+	} 50% { 
+		transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+		-webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+	} 100% { 
+		transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+		-webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+	}
+}
+
+/* Helpers */
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.captialize::first-letter {
+	text-transform: uppercase;
+}
+
+.center-form {
+	margin-right: 30%;
+	margin-left: 20%;
+}
+
+@media (max-width: 768px) {
+	.center-form {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+/* Misc */
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 130px;
+}
+
+main {
+	margin-top: 3%;
+	padding-bottom: 1%;
+}
+
+.form-group:nth-child(2n+1),
+label[for="captcha"] {
+	padding-top: 15px;
+}
+
+textarea {
+	min-height: 100px !important;
+}
+
+.btn {
+	margin: 1rem 0 1rem;
+	width: 10rem;
+	height: 2.6rem;
+}
+
+.btn-primary {
+	background-color: #424f5a;
+	border-color: #424f5a;
+}
+
+.input-group {
+	border-top: 0;
+	width: 100%;
+	border-top: 1px solid #dcdcdc;
+}
+
+.form-control {
+	height: 40px;
+}
+
+.has-danger,
+.form-control-danger {
+	color: #d9534f;
+	border-color: #d9534f;
+}
+
+@media (min-width: 1200px) {
+	.container {
+	    max-width: 1250px;
+	}
+}
+
+.card {
+	float: left;
+	width: 33.333%;
+	padding: .75rem;
+	margin-bottom: 2rem;
+	border: 0;
+}
+
+.page-link {
+	color: #fffff4;
+    background-color: #424f5a;
+    border: 1px solid #333;
+}
+.page-link:hover,
+.page-link:focus {
+	color: #fffff4;
+}
+
+/* I really hate bootstrap sometimes... */
+.page-item.active .page-link,
+.page-link:hover,
+.page-link:focus,
+.page-item.active .page-link:hover,
+.btn:hover,
+.btn:focus,
+.btn:active
+.btn-primary:active,
+.open>.btn-primary.dropdown-toggle {
+	background-color: #72818e !important;
+	border-color: #333333 !important;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	height: 130px;
+	width: 100%;
+	text-align: center;
+	background-color: #292929;
+	padding: 15px;
+	color: #e7ffff;
+}
+
+footer .container {
+	padding-top: 10px;
+	font-size: 11px;
+}
+
+@media (max-width: 990px) {
+	footer {
+		height: auto;
+	}
+}
+
+/* test */
+.blog-container {
+	max-width: 60rem
+}
+
+.blog-main {
+	padding-top: 5%
+}
+
+.blog-post {
+	margin-bottom: 7rem
+}
+
+.blog-post-title {
+	margin-bottom: .25rem;
+	font-size: 2.5rem
+}
+
+.blog-post-meta {
+	margin-bottom: 1.25rem;
+	color: #999
+}
+
+.blog-post h3 {
+	padding-top: 20px;
+}
+
+@media (min-width: 40em) {
+	.blog-title {
+		font-size: 3.5rem
+	}
+}

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-dark bg-inverse navbar-static-top" ng-cloak>
+	<div class="container">
+		<button ng-click="navCtrl.collapse()" class="navbar-toggler hidden-sm-up pull-xs-right" type="button">☰</button>
+
+		<a ui-sref="home" ng-show="!navCtrl.isCollapsed" class="navbar-brand">WoWMods</a>
+
+		<div ng-class="{'in': navCtrl.isCollapsed}" class="collapse navbar-toggleable-xs">
+			<ul ng-class="navCtrl.collapseClass" class="nav">
+				<li class="nav-item">
+					<a ui-sref="expansion({expID: 'vanilla'})" class="nav-link" ui-sref-active="active">Vanilla</a>
+				</li>
+				<li class="nav-item">
+					<a ui-sref="expansion({expID: 'tbc'})" class="nav-link" ui-sref-active="active">TBC</a>
+				</li>
+				<li class="nav-item">
+					<a ui-sref="expansion({expID: 'wotlk'})" class="nav-link" ui-sref-active="active">WotLK</a>
+				</li>
+				<li class="nav-item" uib-dropdown is-open="false">
+					<a href="#" type="button" class="nav-link dropdown-toggle" uib-dropdown-toggle>How-to</a>
+
+					<div class="dropdown-menu" uib-dropdown-menu>
+						<a ui-sref="tutorial" class="dropdown-item">Installing addons</a>
+						<a ui-sref="uploading" class="dropdown-item">Uploading addons</a>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav pull-xs-right">
+				<li class="nav-item">
+					<a ui-sref="upload" class="nav-link">Upload addon</a>
+				</li>
+				<li class="nav-item" uib-dropdown is-open="false">
+					<a href="#" type="button" class="nav-link dropdown-toggle" uib-dropdown-toggle>Account</a>
+
+					<div class="dropdown-menu" uib-dropdown-menu>
+						<div ng-if="!user.loggedIn">
+							<a ui-sref="login" class="dropdown-item">Login</a>
+							<a ui-sref="register" class="dropdown-item">Register</a>
+						</div>
+						<div ng-if="user.loggedIn">
+							<a ui-sref="account" class="dropdown-item capitalize">{{::user.name}}</a>
+							<a ng-click="user.logout()" class="dropdown-item">Logout</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

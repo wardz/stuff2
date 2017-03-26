@@ -1,0 +1,79 @@
+<script src='https://www.google.com/recaptcha/api.js' type="text/javascript-lazy" async defer></script>
+
+<main class="container" ng-cloak>
+	<form ng-submit="ctrl.submit()" name="ctrl.form" class="center-form">
+		<div ng-if="ctrl.errorMessage" class="alert alert-danger">
+			{{ctrl.errorMessage}}
+		</div>
+
+		<fieldset class="form-group">
+			<legend>Register account<br><small class="text-muted">An account allows you to upload addons.</small></legend>
+			<label for="username">Username</label>
+			<input type="text" class="form-control" id="username"
+				name="username"
+				placeholder="Enter your username..."
+				ng-class="{'form-control-danger': ctrl.userError}"
+				ng-model="formData.username"
+				ng-maxlength="16"
+				ng-minlength="3"
+				ng-required="true"
+				ng-pattern="/^[a-zA-Z]*$/"
+				ng-click="ctrl.resetError()">
+
+			<small ng-show="ctrl.userError" class="has-danger">Invalid username (Letters a-z only, length 3-16).</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="email">Email (Optional)</span></label>
+			<input type="email" class="form-control" id="email"
+				name="email"
+				placeholder="Enter your email address..."
+				ng-class="{'form-control-danger': ctrl.userError}"
+				ng-model="formData.email"
+				ng-maxlength="250"
+				ng-minlength="4"
+				ng-click="ctrl.resetError()"
+				disabled="disabled">
+
+			<small class="text-muted">Email is only used for account recovery.</small>
+			<small ng-show="ctrl.emailError" class="has-danger">Invalid email address.</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="password">Password</label>
+			<input type="password" class="form-control" id="password"
+				name="password"
+				placeholder="Enter your password..."
+				ng-class="{'form-control-danger': ctrl.passError}"
+				ng-model="formData.password"
+				ng-maxlength="32"
+				ng-minlength="6"
+				ng-required="true"
+				ng-click="ctrl.resetError()">
+
+				<small ng-show="ctrl.passError" class="has-danger">Invalid password (Length 6-32).</small>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<label for="repassword">Confirm password</label>
+			<input type="password" class="form-control" id="repassword"
+				name="repassword"
+				placeholder="Re-type your password..."
+				ng-class="{'form-control-danger': ctrl.repassError}"
+				ng-model="formData.repassword"
+				ng-maxlength="32"
+				ng-minlength="6"
+				ng-required="true"
+				ng-click="ctrl.resetError()">
+
+				<small ng-show="ctrl.repassError" class="has-danger">Invalid password match.</small>
+		</fieldset>
+
+		<label for="captcha">Human verification</label>
+		<div class="g-recaptcha" id="captcha" data-sitekey="{{::ctrl.CAPTCHA_KEY_PUBLIC}}"></div>
+		<small ng-show="ctrl.capError" class="has-danger">Empty or invalid captcha.<br></small>
+
+		<button ng-disabled="ctrl.isSubmitting" type="submit" class="btn btn-primary">Register</button>
+		<p>Have account? <a ui-sref="login">Login here.</a></p>
+	</form>
+</main>
